@@ -1,0 +1,20 @@
+{
+  "name": "fr.openent~flashquizz~0.1-SNAPSHOT",
+  "config": {
+    "main" : "fr.openent.flashquizz.Flashquizz",
+    "port" : 8065,
+    "app-name" : "Flashquizz",
+    "app-address" : "/flashquizz",
+    "app-icon" : "${host}/flashquizz/public/img/logo-flashquizz.svg",
+    "host": "${host}",
+    "ssl" : $ssl,
+    "sql" : true,
+    "db-schema" : "flashquizz",
+    "auto-redeploy": false,
+    "userbook-host": "${host}",
+    "integration-mode" : "HTTP",
+    "app-registry.port" : 8012,
+    "mode" : "${mode}",
+    "entcore.port" : 8009
+  }
+}

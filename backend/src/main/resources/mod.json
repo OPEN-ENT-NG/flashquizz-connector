@@ -1,0 +1,11 @@
+{
+  "main" : "fr.openent.flashquizz.Flashquizz",
+  "port" : 8064,
+  "app-name" : "Flashquizz",
+  "app-address" : "/flashquizz",
+  "app-icon" : "flashquizz-large",
+  "app-displayName" : "Flashquizz",
+  "mode": "dev",
+  "entcore.port" : 8090,
+  "auto-redeploy": false
+}

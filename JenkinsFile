@@ -1,0 +1,31 @@
+#!/usr/bin/env groovy
+
+pipeline {
+  agent any
+  stages {
+
+    stage('Frontend React') {
+      steps {
+        dir('frontend') {
+          sh 'chmod +x build.sh && ./build.sh installDeps build'
+        }
+      }
+    }
+
+    stage('Backend') {
+      steps {
+        dir('backend') {
+          sh 'cp -R ../frontend/dist/* ./src/main/resources/'
+          sh 'mkdir -p ./src/main/resources/view'
+          sh 'mkdir -p ./src/main/resources/public/template'
+          sh 'mkdir -p ./src/main/resources/public/img'
+          sh 'mkdir -p ./src/main/resources/public/js'
+          sh 'mv ./src/main/resources/*.html ./src/main/resources/view'
+          sh 'cp -R ../frontend/public/* ./src/main/resources/public'
+          sh 'chmod +x build.sh && ./build.sh clean build publish'
+          sh 'rm -rf ../frontend/dist'
+        }
+      }
+    }
+  }
+}
