@@ -2,7 +2,7 @@
   "name": "fr.openent~flashquizz~0.1-SNAPSHOT",
   "config": {
     "main" : "fr.openent.flashquizz.Flashquizz",
-    "port" : 8065,
+    "port" : 8046,
     "app-name" : "Flashquizz",
     "app-address" : "/flashquizz",
     "app-icon" : "${host}/flashquizz/public/img/logo-flashquizz.svg",
