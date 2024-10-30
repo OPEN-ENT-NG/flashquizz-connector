@@ -35,7 +35,7 @@ public class FlashquizzController extends ControllerHelper {
     @ApiDoc("Render flashquizz view")
     @fr.wseduc.security.SecuredAction(Flashquizz.VIEW_RIGHT)
     public void view(HttpServerRequest request) {
-        renderView(request, new JsonObject(), "index.html", null);
+        renderView(request);
         eventStore.createAndStoreEvent(FlashquizzEvent.ACCESS.name(), request);
     }
 }
