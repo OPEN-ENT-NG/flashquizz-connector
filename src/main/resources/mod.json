@@ -1,0 +1,14 @@
+{
+  "main" : "fr.openent.flashquizz.SsoFlashquizz",
+  "port" : 8046,
+  "app-name" : "Flashquizz-connector",
+  "app-address" : "/flashquizz",
+  "app-icon" : "flashquizz-large",
+  "app-displayName" : "Flashquizz-connector",
+  "eb-address": "flashquizz.sso",
+  "workflow-prefix": "fr.openent.flashquizz",
+  "path-prefix": "flashquizz", 
+  "mode": "dev",
+  "entcore.port" : 8090,
+  "auto-redeploy": false
+}

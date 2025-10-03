@@ -1,55 +1,114 @@
 #!/bin/bash
 
-# Clean files
-echo -e '\n------------------'
-echo 'Clean before build'
-echo '------------------'
-cd backend
-rm -rf ./.gradle
-rm -rf ./build
-rm -rf ./gradle
-rm -rf ./src/main/resources/public
-rm -rf ./src/main/resources/view
-echo 'Repo clean for build !'
-cd ..
+MVN_OPTS="-Duser.home=/var/maven"
 
-# Frontend
-echo -e '\n--------------'
-echo 'Build Frontend'
-echo '--------------'
-cd frontend
-#./build.sh --no-docker clean init build
-./build.sh installDeps build
-cd ..
+if [ ! -e node_modules ]
+then
+  mkdir node_modules
+fi
 
-# Create directory structure and copy frontend dist
-echo -e '\n--------------------'
-echo 'Copy front files built'
-echo '----------------------'
-cd backend
-cp -R ../frontend/dist/* ./src/main/resources
+case `uname -s` in
+  MINGW*)
+    USER_UID=1000
+    GROUP_UID=1000
+    ;;
+  *)
+    if [ -z ${USER_UID:+x} ]
+    then
+      USER_UID=`id -u`
+      GROUP_GID=`id -g`
+    fi
+esac
 
-# Create view directory and copy HTML files into Backend
-mkdir -p ./src/main/resources/view
-mkdir -p ./src/main/resources/public/template
-mkdir -p ./src/main/resources/public/img
-mkdir -p ./src/main/resources/public/js
-mv ./src/main/resources/*.html ./src/main/resources/view
+clean () {
+  docker-compose run --rm maven mvn $MVN_OPTS clean
+}
 
-# Copy all public files from frontend into Backend
-cp -R ../frontend/public/* ./src/main/resources/public
-echo 'Files all copied !'
+install() {
+    docker-compose run --rm maven mvn $MVN_OPTS install -DskipTests
+}
 
-# Build .
-echo -e '\n-------------'
-echo 'Build Backend'
-echo '-------------'
-#./build.sh --no-docker clean build
-./build.sh clean build
+publish() {
+    version=`docker-compose run --rm maven mvn $MVN_OPTS help:evaluate -Dexpression=project.version -q -DforceStdout`
+    level=`echo $version | cut -d'-' -f3`
 
-# Clean up - remove compiled files in front folders
-echo -e '\n-------------'
-echo 'Clean front folders'
-echo '-------------'
-rm -rf ../frontend/dist
-echo 'Folders cleaned !'
+    case "$level" in
+        *SNAPSHOT)
+            export nexusRepository='snapshots'
+            ;;
+        *)
+            export nexusRepository='releases'
+            ;;
+    esac
+
+    docker-compose run --rm maven mvn -DrepositoryId=ode-$nexusRepository -DskiptTests -Dmaven.test.skip=true --settings /var/maven/.m2/settings.xml deploy
+}
+
+publishNexus() {
+  version=`docker compose run --rm maven mvn $MVN_OPTS help:evaluate -Dexpression=project.version -q -DforceStdout`
+  level=`echo $version | cut -d'-' -f3`
+  case "$level" in
+    *SNAPSHOT) export nexusRepository='snapshots' ;;
+    *)         export nexusRepository='releases' ;;
+  esac
+  docker compose run --rm  maven mvn -DrepositoryId=ode-$nexusRepository -Durl=$repo -DskipTests -Dmaven.test.skip=true --settings /var/maven/.m2/settings.xml deploy
+}
+
+init() {
+  me=`id -u`:`id -g`
+  echo "DEFAULT_DOCKER_USER=$me" > .env
+}
+
+testNode () {
+  rm -rf coverage
+  rm -rf */build
+  case `uname -s` in
+    MINGW*)
+      docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm install --no-bin-links && node_modules/gulp/bin/gulp.js drop-cache && npm test"
+      ;;
+    *)
+      docker-compose run --rm -u "$USER_UID:$GROUP_GID" node sh -c "npm install && node_modules/gulp/bin/gulp.js drop-cache && npm test"
+  esac
+}
+
+test() {
+  docker-compose run --rm maven mvn $MVN_OPTS test
+}
+
+for param in "$@"
+do
+  case $param in
+    clean)
+      clean
+      ;;
+    buildMaven)
+      install
+      ;;
+    install)
+      install
+      ;;
+    publish)
+      publish
+      ;;
+    publishNexus)
+      publishNexus
+      ;;
+    test)
+      testNode ; test
+      ;;
+    testNode)
+      testNode
+      ;;
+    testMaven)
+      test
+      ;;
+    init)
+      init
+      ;;
+    *)
+      echo "Invalid argument : $param"
+  esac
+  if [ ! $? -eq 0 ]; then
+    exit 1
+  fi
+done
