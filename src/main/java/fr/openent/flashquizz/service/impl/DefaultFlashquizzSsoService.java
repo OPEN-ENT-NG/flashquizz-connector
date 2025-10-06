@@ -51,18 +51,21 @@ public class DefaultFlashquizzSsoService implements FlashquizzSsoService {
             }
 
             JsonObject ssoData = result.right().getValue();
-            JsonArray workflowRights = ssoData.getJsonArray("workflowRights", new JsonArray());
+            JsonArray workflowRightsArray = ssoData.getJsonArray(WORKFLOW_RIGHTS, new JsonArray());
+
+            JsonObject workflowRightsObject = new JsonObject()
+                    .put(HAS_QUIZZ_VIEW, workflowRightsArray.contains(QUIZZ_VIEW))
+                    .put(HAS_QUIZZ_GESTION, workflowRightsArray.contains(QUIZZ_GESTION))
+                    .put(HAS_GAME_VIEW, workflowRightsArray.contains(GAME_VIEW))
+                    .put(HAS_GAME_GESTION, workflowRightsArray.contains(GAME_GESTION));
 
             JsonObject enrichedData = new JsonObject()
-                    .put("id", ssoData.getString("id"))
-                    .put("login", ssoData.getString("login"))
-                    .put("displayName", ssoData.getString("displayName"))
-                    .put("email", ssoData.getString("email"))
-                    .put("profile", ssoData.getString("profile"))
-                    .put("hasQuizzView", workflowRights.contains("quizz.view"))
-                    .put("hasQuizzGestion", workflowRights.contains("quizz.gestion"))
-                    .put("hasGameView", workflowRights.contains("game.view"))
-                    .put("hasGameGestion", workflowRights.contains("game.gestion"));
+                    .put(ID, ssoData.getString(ID))
+                    .put(LOGIN, ssoData.getString(LOGIN))
+                    .put(DISPLAY_NAME, ssoData.getString(DISPLAY_NAME))
+                    .put(EMAIL, ssoData.getString(EMAIL))
+                    .put(PROFILE, ssoData.getString(PROFILE))
+                    .put(WORKFLOW_RIGHTS, workflowRightsObject);
 
             promise.complete(enrichedData);
         }));

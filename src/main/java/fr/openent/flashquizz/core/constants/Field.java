@@ -7,29 +7,22 @@ public class Field {
     public static final String DISPLAY_NAME = "displayName";
     public static final String EMAIL = "email";
     public static final String PROFILE = "profile";
-
-    // SSO fields
-    public static final String HOST = "host";
-    public static final String SERVICE_PROVIDER_ID = "serviceProviderId";
-    public static final String GROUP = "group";
-
-    // Structure fields
-    public static final String STRUCTURES = "structures";
-    public static final String CLASSES = "classes";
     public static final String ID = "id";
-    public static final String NAME = "name";
 
-    // Profile types
-    public static final String TEACHER = "Teacher";
-    public static final String STUDENT = "Student";
-    public static final String PERSONNEL = "Personnel";
-    public static final String RELATIVE = "Relative";
-
-    // Workflow fields
+    // Workflow rights fields
     public static final String WORKFLOW_RIGHTS = "workflowRights";
-    public static final String WORKFLOW_ID = "workflowId";
-    public static final String RIGHTS = "rights";
-    public static final String SCOPE = "scope";
+    
+    // Workflow rights names
+    public static final String QUIZZ_VIEW = "quizz.view";
+    public static final String QUIZZ_GESTION = "quizz.gestion";
+    public static final String GAME_VIEW = "game.view";
+    public static final String GAME_GESTION = "game.gestion";
+    
+    // Workflow rights boolean keys
+    public static final String HAS_QUIZZ_VIEW = "hasQuizzView";
+    public static final String HAS_QUIZZ_GESTION = "hasQuizzGestion";
+    public static final String HAS_GAME_VIEW = "hasGameView";
+    public static final String HAS_GAME_GESTION = "hasGameGestion";
 
     private Field() {
         throw new IllegalStateException("Utility class");
