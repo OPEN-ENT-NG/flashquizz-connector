@@ -3,7 +3,7 @@
 # À propos de l'application Flashquizz
 * Licence : [AGPL v3](http://www.gnu.org/licenses/agpl.txt) - Copyright CGI
 * Développeur : CGI
-* Financeurs : CRNA
+* Financeurs : VDP / NA 77
 * Description : Connecteur permettant d'alimenter Flashquizz
 
 # Présentation du module
