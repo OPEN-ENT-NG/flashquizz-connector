@@ -8,7 +8,7 @@
     "app-icon" : "flashquizz-large",
     "host": "${host}",
     "ssl" : $ssl,
-    "eb-address": "flashquizz.sso",
+    "eb-address": "fr.openent.ssoflashquizz",
     "workflow-prefix": "fr.openent.flashquizz",
     "path-prefix": "flashquizz", 
     "auto-redeploy": false,

@@ -5,7 +5,7 @@
   "app-address" : "/flashquizz",
   "app-icon" : "flashquizz-large",
   "app-displayName" : "Flashquizz-connector",
-  "eb-address": "flashquizz.sso",
+  "eb-address": "fr.openent.ssoflashquizz",
   "workflow-prefix": "fr.openent.flashquizz",
   "path-prefix": "flashquizz", 
   "mode": "dev",
