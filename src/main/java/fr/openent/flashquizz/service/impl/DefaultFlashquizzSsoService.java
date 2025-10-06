@@ -5,7 +5,6 @@ import fr.openent.flashquizz.model.SsoData;
 import fr.openent.flashquizz.service.FlashquizzSsoService;
 import io.vertx.core.Future;
 import io.vertx.core.Promise;
-import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
 import io.vertx.core.logging.LoggerFactory;
@@ -14,6 +13,8 @@ import org.entcore.common.neo4j.Neo4j;
 import org.entcore.common.neo4j.Neo4jResult;
 
 import static fr.openent.flashquizz.core.constants.Field.*;
+
+import fr.openent.flashquizz.core.constants.Field;
 import fr.openent.flashquizz.core.constants.Rights;
 
 public class DefaultFlashquizzSsoService implements FlashquizzSsoService {
@@ -41,7 +42,7 @@ public class DefaultFlashquizzSsoService implements FlashquizzSsoService {
 
         JsonObject params = new JsonObject()
                 .put(USER_ID, userId)
-                .put("workflowPrefix", Rights.DEFAULT_WORKFLOW_PREFIX);
+                .put(Field.WORKFLOW_PREFIX, Rights.DEFAULT_WORKFLOW_PREFIX);
 
         Neo4j.getInstance().execute(query, params, Neo4jResult.validUniqueResultHandler(result -> {
             if (result.isLeft()) {
