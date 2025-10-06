@@ -1,20 +1,20 @@
 {
-  "name": "fr.openent~flashquizz-connector~${flashquizzConnectorVersion}",
+  "name": "fr.openent~flashquizz-connector~{{ flashquizzConnectorVersion }}",
   "config": {
     "main" : "fr.openent.flashquizz.FlashquizzConnector",
     "port" : 8046,
     "app-name" : "Flashquizz-connector",
     "app-address" : "/flashquizz-connector",
     "app-icon" : "flashquizz-large",
-    "host": "${host}",
+    "host": "{{ host }}",
     "ssl" : $ssl,
-    "eb-address": "fr.openent.ssoflashquizz",
+    "eb-address": "{{ flashquizzConnectorEbAdress }}",
     "path-prefix": "flashquizz-connector", 
     "auto-redeploy": false,
-    "userbook-host": "${host}",
+    "userbook-host": "{{ host }}",
     "integration-mode" : "HTTP",
     "app-registry.port" : 8012,
-    "mode" : "${mode}",
+    "mode" : "{{ mode }}",
     "entcore.port" : 8009
   }
 }
