@@ -1,27 +1,29 @@
-# flashquizz
+# Flashquizz
 
-# À propos de l'application flasquizz
+# À propos de l'application Flashquizz
 * Licence : [AGPL v3](http://www.gnu.org/licenses/agpl.txt) - Copyright CGI
 * Développeur : CGI
-* Financeurs : CGI
-* Description : Module permettant de lancer des quizz interactifs
+* Financeurs : VDP / NA 77
+* Description : Connecteur permettant d'alimenter Flashquizz
 
 # Présentation du module
-
-L'application **flashquizz** devrait permettre aux enseignants de lancer des quizz interactifs avec leurs élèves.
-
-## Configuration
-<pre>
+L'application **Flashquizz** est un connectreur permettant de fournir de façon efficace les informations nécessaires au bon fonctionnement de l'application **Flashquizz**
+Les infos en question sont du type :
+```
 {
-  "config": {
-  
+  "id": "user-abc123",
+  "login": "jean.dupont",
+  "displayName": "Jean Dupont",
+  "email": "jean.dupont@college.fr",
+  "profile": "Teacher",
+  "workflowRights": {
+    "hasQuizzView": true,
+    "hasQuizzGestion": true,
+    "hasGameView": false,
+    "hasGameGestion": false
   }
 }
-</pre>
+```
 
-Dans votre springboard, vous devez inclure des variables d'environnement :
-
-<pre>
-
-</pre>
-
+## Configuration
+Pas de configuration ou de variable d'environnement spécifique
