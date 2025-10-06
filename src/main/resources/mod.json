@@ -1,5 +1,5 @@
 {
-  "main" : "fr.openent.flashquizz.SsoFlashquizz",
+  "main" : "fr.openent.flashquizz.SSOFlashquizz",
   "port" : 8046,
   "app-name" : "Flashquizz-connector",
   "app-address" : "/flashquizz",
