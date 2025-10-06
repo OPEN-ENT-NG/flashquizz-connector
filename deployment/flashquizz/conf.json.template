@@ -1,15 +1,15 @@
 {
   "name": "fr.openent~flashquizz-connector~${flashquizzConnectorVersion}",
   "config": {
-    "main" : "fr.openent.flashquizz.SsoFlashquizz",
+    "main" : "fr.openent.flashquizz.FlashquizzConnector",
     "port" : 8046,
     "app-name" : "Flashquizz-connector",
-    "app-address" : "/flashquizz",
+    "app-address" : "/flashquizz-connector",
     "app-icon" : "flashquizz-large",
     "host": "${host}",
     "ssl" : $ssl,
     "eb-address": "fr.openent.ssoflashquizz",
-    "path-prefix": "flashquizz", 
+    "path-prefix": "flashquizz-connector", 
     "auto-redeploy": false,
     "userbook-host": "${host}",
     "integration-mode" : "HTTP",
