@@ -16,31 +16,12 @@ Les infos en question sont du type :
   "displayName": "Jean Dupont",
   "email": "jean.dupont@college.fr",
   "profile": "Teacher",
-  "structures": [
-    {
-      "id": "struct-xyz789",
-      "name": "Collège Victor Hugo",
-      "uai": "0751234A"
-    }
-  ],
-  "classes": [
-    {
-      "id": "class-def456",
-      "name": "4ème A"
-    },
-    {
-      "id": "class-ghi789",
-      "name": "3ème B"
-    }
-  ],
-  "workflowRights": [
-    {
-      "workflowId": "wf-flashquizz-001",
-      "workflowName": "flashquizz",
-      "rights": ["create", "read", "update", "delete"],
-      "scope": ["struct-xyz789"]
-    }
-  ]
+  "workflowRights": {
+    "hasQuizzView": true,
+    "hasQuizzGestion": true,
+    "hasGameView": false,
+    "hasGameGestion": false
+  }
 }
 ```
 

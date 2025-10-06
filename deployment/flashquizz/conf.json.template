@@ -9,7 +9,6 @@
     "host": "${host}",
     "ssl" : $ssl,
     "eb-address": "fr.openent.ssoflashquizz",
-    "workflow-prefix": "fr.openent.flashquizz",
     "path-prefix": "flashquizz", 
     "auto-redeploy": false,
     "userbook-host": "${host}",

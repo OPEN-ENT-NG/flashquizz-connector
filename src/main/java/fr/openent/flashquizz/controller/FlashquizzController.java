@@ -9,6 +9,8 @@ import io.vertx.core.http.HttpServerRequest;
 import io.vertx.core.json.JsonObject;
 
 import org.entcore.common.controller.ControllerHelper;
+import org.entcore.common.http.filter.ResourceFilter;
+import org.entcore.common.http.filter.SuperAdminFilter;
 import org.entcore.common.user.UserUtils;
 
 import fr.openent.flashquizz.core.constants.Rights;
@@ -42,7 +44,8 @@ public class FlashquizzController extends ControllerHelper {
     //health/test 
     @Get("")
     @ApiDoc("Flashquizz test route")
-    @SecuredAction(value = "", type = ActionType.AUTHENTICATED)
+    @SecuredAction(value = "", type = ActionType.RESOURCE)
+    @ResourceFilter(SuperAdminFilter.class)
     public void render(HttpServerRequest request) {
         JsonObject response = new JsonObject().put("message", "Flashquizz SSO Connector OK");
         renderJson(request, response);
@@ -50,7 +53,8 @@ public class FlashquizzController extends ControllerHelper {
 
     @Get("/test-sso")
     @ApiDoc("Test SSO endpoint - calls EventBus service")
-    @SecuredAction(value = "", type = ActionType.AUTHENTICATED)
+    @SecuredAction(value = "", type = ActionType.RESOURCE)
+    @ResourceFilter(SuperAdminFilter.class)
     public void testSso(HttpServerRequest request) {
         UserUtils.getUserInfos(eb, request, user -> {
             if (user == null) {
@@ -79,7 +83,8 @@ public class FlashquizzController extends ControllerHelper {
 
     @Get("/sso-direct")
     @ApiDoc("Direct SSO endpoint - bypasses EventBus (for testing only)")
-    @SecuredAction(value = "", type = ActionType.AUTHENTICATED)
+    @SecuredAction(value = "", type = ActionType.RESOURCE)
+    @ResourceFilter(SuperAdminFilter.class)
     public void ssoDirect(HttpServerRequest request) {
         UserUtils.getUserInfos(eb, request, user -> {
             if (user == null) {
