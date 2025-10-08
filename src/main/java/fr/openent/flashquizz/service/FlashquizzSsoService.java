@@ -1,7 +1,7 @@
 package fr.openent.flashquizz.service;
 
 import io.vertx.core.Future;
-import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonArray;
 
 public interface FlashquizzSsoService {
 
@@ -11,5 +11,5 @@ public interface FlashquizzSsoService {
      * @param userId User identifier
      * @return Future with JsonObject containing all user data and workflow rights
      */
-    Future<JsonObject> generateSsoData(String userId);
+    Future<JsonArray> generateSsoData(String userId);
 }
