@@ -54,8 +54,8 @@ public class FlashquizzController extends ControllerHelper {
 
     @Get("/test-sso")
     @ApiDoc("Test SSO endpoint - calls EventBus service")
-    @SecuredAction(value = "", type = ActionType.RESOURCE)
-    @ResourceFilter(SuperAdminFilter.class)
+    // @SecuredAction(value = "", type = ActionType.RESOURCE)
+    // @ResourceFilter(SuperAdminFilter.class)
     public void testSso(HttpServerRequest request) {
         UserUtils.getUserInfos(eb, request, user -> {
             if (user == null) {
