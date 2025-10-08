@@ -10,19 +10,35 @@
 L'application **Flashquizz** est un connectreur permettant de fournir de façon efficace les informations nécessaires au bon fonctionnement de l'application **Flashquizz**
 Les infos en question sont du type :
 ```
-{
-  "id": "user-abc123",
-  "login": "jean.dupont",
-  "displayName": "Jean Dupont",
-  "email": "jean.dupont@college.fr",
-  "profile": "Teacher",
-  "workflowRights": {
-    "hasQuizzView": true,
-    "hasQuizzGestion": true,
-    "hasGameView": false,
-    "hasGameGestion": false
+[
+  {
+    "id": "user-abc123"
+  },
+  {
+    "login": "jean.dupont"
+  },
+  {
+    "displayName": "Jean Dupont"
+  },
+  {
+    "email": "jean.dupont@college.fr"
+  },
+  {
+    "profile": "Teacher"
+  },
+  {
+    "workflowRights.hasQuizzView": "true"
+  },
+  {
+    "workflowRights.hasQuizzGestion": "true"
+  },
+  {
+    "workflowRights.hasGameView": "false"
+  },
+  {
+    "workflowRights.hasGameGestion": "false"
   }
-}
+]
 ```
 
 ## Configuration

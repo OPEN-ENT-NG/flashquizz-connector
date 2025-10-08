@@ -63,6 +63,7 @@ public class DefaultFlashquizzSsoService implements FlashquizzSsoService {
         JsonArray attributes = new JsonArray();
 
         // Add basic user attributes
+        attributes.add(new JsonObject().put(ID, userData.getString(ID)));
         attributes.add(new JsonObject().put(LOGIN, userData.getString(LOGIN)));
         attributes.add(new JsonObject().put(DISPLAY_NAME, userData.getString(DISPLAY_NAME)));
         attributes.add(new JsonObject().put(EMAIL, userData.getString(EMAIL)));
