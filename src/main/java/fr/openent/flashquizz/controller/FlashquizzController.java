@@ -6,6 +6,7 @@ import fr.wseduc.rs.Get;
 import fr.wseduc.security.ActionType;
 import fr.wseduc.security.SecuredAction;
 import io.vertx.core.http.HttpServerRequest;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 
 import org.entcore.common.controller.ControllerHelper;
@@ -71,7 +72,7 @@ public class FlashquizzController extends ControllerHelper {
             eb.request(serviceFactory.config().ebAddress(), message, reply -> {
                 if (reply.succeeded()) {
                     log.info("[Flashquizz@FlashquizzController::testSso] SSO data retrieved successfully");
-                    renderJson(request, (JsonObject) reply.result().body());
+                    render(request, (JsonArray) reply.result().body());
                 } else {
                     log.error("[Flashquizz@FlashquizzController::testSso] Failed to get SSO data: "
                             + reply.cause().getMessage());
