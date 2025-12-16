@@ -18,7 +18,10 @@ Les infos en question sont du type :
     "login": "jean.dupont"
   },
   {
-    "displayName": "Jean Dupont"
+    "firstName": "Jean"
+  },
+  {
+    "lastName": "Dupont"
   },
   {
     "email": "jean.dupont@college.fr"

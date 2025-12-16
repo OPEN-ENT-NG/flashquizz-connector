@@ -5,6 +5,8 @@ public class Field {
     public static final String USER_ID = "userId";
     public static final String LOGIN = "login";
     public static final String DISPLAY_NAME = "displayName";
+    public static final String FIRST_NAME = "firstName";
+    public static final String LAST_NAME = "lastName";
     public static final String EMAIL = "email";
     public static final String PROFILE = "profile";
     public static final String ID = "id";
