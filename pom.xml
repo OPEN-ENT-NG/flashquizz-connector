@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.edifice</groupId>
         <artifactId>app-parent</artifactId>
-        <version>1.0.1</version>
+        <version>1.2.0</version>
     </parent>
 
     <groupId>fr.openent</groupId>
@@ -28,14 +28,12 @@
     </scm>
 
     <properties>
-        <webUtilsVersion>3.1-SNAPSHOT</webUtilsVersion>
-        <entCoreVersion>6.7-SNAPSHOT</entCoreVersion>
+        <entCoreVersion>6.13-SNAPSHOT</entCoreVersion>
         <toolsVersion>2.0.0-final</toolsVersion>
         <junitVersion>5.1.0</junitVersion>
         <vertxCronTimerVersion>3.0-SNAPSHOT</vertxCronTimerVersion>
         <powerMockVersion>2.0.2</powerMockVersion>
         <mockitoVersion>[2.0,3.0)</mockitoVersion>
-        <gatlingHighchartsVersion>2.2.2</gatlingHighchartsVersion>
         <reflectionsVersion>0.10.2</reflectionsVersion>
     </properties>
 
@@ -116,12 +114,6 @@
             <groupId>org.powermock</groupId>
             <artifactId>powermock-core</artifactId>
             <version>${powerMockVersion}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.gatling.highcharts</groupId>
-            <artifactId>gatling-charts-highcharts</artifactId>
-            <version>${gatlingHighchartsVersion}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
