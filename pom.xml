@@ -10,7 +10,7 @@
   </parent>
   <groupId>fr.openent</groupId>
   <artifactId>flashquizz-connector</artifactId>
-  <version>1.1-SNAPSHOT</version>
+  <version>1.1-agilite-SNAPSHOT</version>
   <repositories>
     <repository>
       <id>ode</id>
@@ -24,7 +24,7 @@
     <url>https://github.com/OPEN-ENT-NG/flashquizz-connector</url>
   </scm>
   <properties>
-    <entCoreVersion>6.17-SNAPSHOT</entCoreVersion>
+    <entCoreVersion>6.18-feeder-it-SNAPSHOT</entCoreVersion>
     <toolsVersion>2.0.0-final</toolsVersion>
     <junitVersion>5.1.0</junitVersion>
     <vertxCronTimerVersion>3.0-SNAPSHOT</vertxCronTimerVersion>
@@ -33,7 +33,7 @@
     <reflectionsVersion>0.10.2</reflectionsVersion>
     <modMongoVersion>4.2-SNAPSHOT</modMongoVersion>
     <modJsonSchemaValidatorVersion>2.2-SNAPSHOT</modJsonSchemaValidatorVersion>
-    <entCoreLibsVersion>6.16-SNAPSHOT</entCoreLibsVersion>
+    <entCoreLibsVersion>6.16-agilite-SNAPSHOT</entCoreLibsVersion>
   </properties>
   <dependencies>
     <dependency>
