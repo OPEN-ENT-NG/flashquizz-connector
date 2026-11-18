@@ -20,7 +20,7 @@ public class SsoFlashquizz extends BusModBase implements Handler<Message<JsonObj
         super.start();
         FlashquizzConfig flashquizzConfig = new FlashquizzConfig(config);
         this.serviceFactory = new ServiceFactory(vertx, Neo4j.getInstance(), flashquizzConfig);
-        vertx.eventBus().localConsumer(flashquizzConfig.ebAddress(), this);
+        vertx.eventBus().consumer(flashquizzConfig.ebAddress(), this);
         log.info("[Flashquizz] SSO service started on EventBus address: " + flashquizzConfig.ebAddress());
     }
 
